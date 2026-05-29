@@ -350,7 +350,7 @@ h2 {
 
   /* 野菜背景 */
   background-image:
-    url("../veg-carrot.svg"),
+    url("./veg-carrot.svg"),
     url("./veg-tomato.svg"),
     url("./veg-potato.svg"),
     url("./veg-cabbage.png");
