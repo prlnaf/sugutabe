@@ -1,73 +1,32 @@
 @charset "UTF-8";
 
-/* ==================================================
-  Foundation
-================================================== */
-:root {
-  --color-text: #4b3426;
-  --color-text-sub: #5a4333;
-  --color-text-muted: #7a675a;
-  --color-white: #fff;
-  --color-bg-light: #f4f3f1;
-  --color-bg-cream: #f6f0e8;
-  --color-bg-beige: #e3ccb9;
-  --color-bg-footer: #cbb8a3;
-  --color-accent: #f57c00;
-  --color-accent-dark: #cf6e00;
-  --color-green: #3d581e;
-  --color-brown: #7a5b3c;
-  --font-base: "Noto Sans JP", sans-serif;
-  --font-serif: "Zen Old Mincho", serif;
-  --container-md: 960px;
-  --container-lg: 1080px;
-  --container-xl: 1200px;
-  --duration: 0.3s;
-}
 
-*,
-*::before,
-*::after {
+/* =========================
+  reset
+========================= */
+* {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  color: var(--color-text);
-  font-family: var(--font-base);
-  line-height: 1.7;
+  font-family: "Noto Sans JP", sans-serif;
+  color: #4b3426;
 }
 
 img {
   max-width: 100%;
-  height: auto;
   display: block;
-}
-
-html {
-  font-size: 62.5%;
 }
 
 a {
-  color: inherit;
   text-decoration: none;
-}
-
-button {
-  font: inherit;
   color: inherit;
-  background: transparent;
-  appearance: none;
 }
 
-/* ==================================================
-  Utility
-================================================== */
-.u-pc-br {
-  display: none;
-}
-
-.u-sp-br {
-  display: block;
+h2 {
+  font-family: "Zen Old Mincho", sans-serif;
 }
 
 .pc__br {
@@ -78,123 +37,20 @@ button {
   display: block;
 }
 
-.is-fixed {
-  overflow: hidden;
-}
-
-@media screen and (min-width: 768px) {
-  .u-pc-br,
+@media screen and (min-width: 767px) {
   .pc__br {
     display: block;
   }
 
-  .u-sp-br,
   .sp__br {
     display: none;
   }
 }
-
-/* ==================================================
-  Component: Button
-================================================== */
-/*
-Button
-
-汎用ボタン。CTAの基礎スタイルとして使用します。
-
-Markup:
-<a class="c-button" href="#">初回限定セットを見る</a>
-
-.c-button--brown - ブラウンのグラデーションボタン
-.c-button--orange - オレンジのCVボタン
-
-Styleguide Component.Button
-*/
-.c-button,
-.header__btn,
-.fv__btn,
-.about__btn,
-.trial__btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  min-height: 45px;
-  padding: 14px 28px;
-  border-radius: 999px;
-  color: var(--color-white);
-  font-size: 14px;
-  line-height: 1.2;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
-  transition: opacity var(--duration) ease, transform var(--duration) ease;
-}
-
-.c-button::after,
-.header__btn::after,
-.fv__btn::after,
-.about__btn::after,
-.trial__btn::after {
-  content: "";
-  width: 8px;
-  height: 8px;
-  border-top: 2px solid currentColor;
-  border-right: 2px solid currentColor;
-  transform: rotate(45deg);
-  transition: transform var(--duration) ease;
-}
-
-.c-button:hover,
-.header__btn:hover,
-.fv__btn:hover,
-.about__btn:hover,
-.trial__btn:hover {
-  opacity: 0.9;
-}
-
-.c-button:hover::after,
-.header__btn:hover::after,
-.fv__btn:hover::after,
-.about__btn:hover::after,
-.trial__btn:hover::after {
-  transform: rotate(45deg) translate(4px, -4px);
-}
-
-.c-button--brown,
-.header__btn {
-  background-image: linear-gradient(135deg, #c8a77a 0%, #8a6a4f 50%, #4b3c2a 100%);
-}
-
-.c-button--orange,
-.fv__btn,
-.about__btn,
-.trial__btn {
-  background: var(--color-accent);
-}
-
-/* ==================================================
-  Project: Header
-================================================== */
-/*
-Header
-
-LP全体の固定導線。PCではナビゲーション、SPではドロワーに切り替えます。
-
-Markup:
-<header class="header">
-  <div class="header__inner">
-    <h1 class="header__logo"><a href="#"><img src="assets/img/sugutabe-logo.svg" alt="スグ食べ"></a></h1>
-    <nav class="header__nav js-drawer" aria-label="グローバルナビゲーション">
-      <ul class="header__nav-list">
-        <li class="header__nav-item"><a class="header__nav-link" href="#about">ABOUT</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
-
-Styleguide Project.Header
-*/
+/* =========================
+  header
+========================= */
 .header {
-  background: var(--color-white);
+  background: #fff;
   border-bottom: 1px solid rgba(75, 52, 38, 0.08);
 }
 
@@ -202,96 +58,196 @@ Styleguide Project.Header
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.6rem 2rem;
+  padding: 16px 20px;
 }
 
 .header__logo {
-  flex-shrink: 0;
+  position: relative;
+  z-index: 1001;
 }
 
 .header__logo img {
-  width: 12rem;
+  width: 120px;
 }
 
 .header__cta {
-  display: block;
-}
-
-.header__btn {
-  min-height: 4rem;
-  padding: 0 1.6rem;
-  border-radius: 0.8rem;
-  font-size: 1.2rem;
-}
-
-/* SPではnavを非表示 */
-.p-header__nav {
   display: none;
 }
 
+/* =========================
+  hamburger
+========================= */
+.hamburger {
+  position: relative;
+  z-index: 1001;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  width: 40px;
+  height: 40px;
+}
+
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #4b3426;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.hamburger.is-open span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.is-open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.is-open span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* =========================
+  sp drawer nav
+========================= */
+.header__nav {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(246, 240, 232, 0.96);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.header__nav.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.header__nav-list {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  list-style: none;
+  text-align: center;
+  font-family: "Zen Old Mincho", sans-serif;
+}
+
+.header__nav a {
+  font-size: 16px;
+  letter-spacing: 0.08em;
+}
+
+/* body固定用 */
+.is-fixed {
+  overflow: hidden;
+}
+
+/* =========================
+  pc
+========================= */
 @media screen and (min-width: 768px) {
   .header__inner {
-    max-width: var(--container-xl);
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 1.8rem 4rem;
+    padding: 18px 40px;
+  }
+
+  .hamburger {
+    display: none;
+  }
+
+  .header__nav {
+    position: static;
+    inset: auto;
+    z-index: auto;
+
+    display: block;
+    background: transparent;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .header__nav-list {
+    flex-direction: row;
+    gap: 40px;
+  }
+
+  .header__nav a {
+    font-size: 12px;
+  }
+
+  .header__cta {
+    display: block;
+    margin-left: 24px;
   }
 
   .header__btn {
-    padding: 0 2rem;
-    font-size: 1.3rem;
-  }
-
-  .p-header__nav {
-    display: block;
-  }
-
-  .p-header__nav-list {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: 4rem;
-    list-style: none;
-    font-family: var(--font-serif);
+    justify-content: center;
+    gap: 8px;
+
+    height: 40px;
+    padding: 0 20px;
+    border-radius: 8px;
+
+    font-size: 13px;
+    color: #fff;
+    line-height: 1;
+
+    background-image: linear-gradient(
+      135deg,
+      #c8a77a 0%,
+      #8a6a4f 50%,
+      #4b3c2a 100%
+    );
   }
 
-  .p-header__nav-link {
-    font-size: 1.2rem;
-    line-height: 1.5;
-    letter-spacing: 0.08em;
-    transition: opacity var(--duration) ease;
+  .header__btn::after {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-top: 2px solid #fff;
+    border-right: 2px solid #fff;
+    transform: rotate(45deg);
+    transition: transform 0.3s ease;
   }
 
-  .p-header__nav-link:hover {
-    opacity: 0.65;
+  .header__btn:hover::after {
+    transform: rotate(45deg) translate(6px, -6px);
   }
 }
 
-/* ==================================================
-  Project: First View
-================================================== */
-/*
-First View
-
-LP冒頭の訴求エリア。背景写真・価格訴求・安心要素・CTAをまとめます。
-
-Markup:
-<section class="fv">
-  <div class="fv__inner">
-    <div class="fv__content">
-      <p class="fv__sub">子どもにも安心して食べさせたい方へ</p>
-      <h2 class="fv__title">朝どりオーガニック野菜を<br>最短<span class="fv__title-accent">24時間</span>でご自宅へ</h2>
-    </div>
-  </div>
-</section>
-
-Styleguide Project.FirstView
-*/
+/* =========================
+  fv
+========================= */
 .fv {
-  position: relative;
   min-height: 650px;
-  background-image: linear-gradient(180deg, rgba(247, 239, 234, 0.9) 0%, rgba(247, 239, 234, 0.7) 40%, rgba(247, 239, 234, 0.2) 80%, rgba(247, 239, 234, 0) 100%), url("../img/fv-vegetable__SP.jpg");
-  background-repeat: no-repeat;
-  background-position: 65% center;
+  position: relative;
+  background-image:
+    linear-gradient(
+      180deg,
+      rgba(247, 239, 234, 0.9) 0%,
+      rgba(247, 239, 234, 0.7) 40%,
+      rgba(247, 239, 234, 0.2) 80%,
+      rgba(247, 239, 234, 0) 100%
+    ),
+    url("../fv-vegetable__SP.jpg");
   background-size: cover;
+  background-position: 65% center;
+  background-repeat: no-repeat;
 }
 
 .fv__inner {
@@ -309,111 +265,45 @@ Styleguide Project.FirstView
 }
 
 .fv__sub {
-  margin-bottom: 16px;
-  color: var(--color-text-sub);
   font-size: 16px;
-  line-height: 1.7;
+  margin-bottom: 16px;
+  color: #5a4333;
 }
 
 .fv__title {
-  margin-bottom: 18px;
-  color: var(--color-text);
-  font-family: var(--font-serif);
-  font-size: 24px;
+  font-size: 20px;
+  line-height: 1.5;
   font-weight: 700;
-  line-height: 1.55;
-}
-
-.fv__title-accent {
-  color: var(--color-accent);
-  font-size: 1.2em;
+  margin-bottom: 24px;
 }
 
 .fv__lead {
-  margin-bottom: 2rem;
-  color: var(--color-text-muted);
-  font-size: 1.4rem;
-  line-height: 1.9;
+  font-size: 14px;
+  line-height: 2;
+  color: #7a675a;
 }
 
-.fv__lead span {
-  font-weight: 700;
-}
-
-.fv__marker {
-  display: inline;
-  background: linear-gradient(
-    transparent 58%,
-    rgba(255, 224, 102, 0.45) 58%
-  );
-}
-
-.fv__points {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 18px;
-  list-style: none;
-}
-
-.fv__points li {
-  position: relative;
-  padding-left: 22px;
-  color: var(--color-text);
-  font-size: 12px;
-  font-weight: 700;
-  line-height: 1.5;
-}
-
-.fv__points li::before {
-  content: "";
-  position: absolute;
-  top: 0.15em;
-  left: 0;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background: #83d55d;
-}
-
-.fv__points li::after {
-  content: "";
-  position: absolute;
-  top: 0.52em;
-  left: 5px;
-  width: 6px;
-  height: 3px;
-  border-left: 2px solid var(--color-white);
-  border-bottom: 2px solid var(--color-white);
-  transform: rotate(-45deg);
-}
-
-.fv__cta {
-  margin-top: 18px;
-}
-
-.fv__btn {
-  min-width: 260px;
-}
-
-.fv__badge {
-  position: absolute;
-  bottom: -600px;
-  right: 12px;
-  width: 180px;
-  z-index: 2;
-  /* transform: rotate(6deg); */
-}
-
+/* =========================
+  PC
+========================= */
 @media screen and (min-width: 768px) {
   .fv {
     min-height: 780px;
-    background-image: linear-gradient(90deg, rgba(247, 239, 234, 0.95) 0%, rgba(247, 239, 234, 0.9) 20%, rgba(247, 239, 234, 0.75) 35%, rgba(247, 239, 234, 0.3) 55%, rgba(247, 239, 234, 0) 75%), url("../img/fv-vegetable.jpg");
+    background-image:
+      linear-gradient(
+        90deg,
+        rgba(247, 239, 234, 0.95) 0%,
+        rgba(247, 239, 234, 0.9) 20%,
+        rgba(247, 239, 234, 0.75) 35%,
+        rgba(247, 239, 234, 0.3) 55%,
+        rgba(247, 239, 234, 0) 75%
+      ),
+      url("./fv-vegetable.jpg");
     background-position: center;
   }
 
   .fv__inner {
-    max-width: var(--container-xl);
+    max-width: 1200px;
     margin: 0 auto;
     padding: 0 40px;
   }
@@ -429,110 +319,101 @@ Styleguide Project.FirstView
   }
 
   .fv__title {
-    margin-bottom: 24px;
     font-size: 48px;
+    margin-bottom: 32px;
+  }
+
+  .fv__title-small {
+    font-size: 40px;
   }
 
   .fv__lead {
-    font-size: 22px;
+    font-size: 24px;
   }
-
-  .fv__points {
-    flex-direction: row;
-    gap: 24px;
-  }
-
 }
 
-@media screen and (min-width: 1191px) {
-.fv__badge {
-  top: 96px;
-  right: 400px;
-  bottom: auto;
-  width: 180px;
-}
-}
-/* ==================================================
-  Project: About
-================================================== */
-/*
-About
-
-FV直後の共感・サービス説明・CTAエリア。
-
-Markup:
-<section class="about">
-  <div class="about__inner">
-    <h2 class="about__title">毎日の食卓で、こんなこと感じていませんか？</h2>
-    <ul class="about__list"><li>旬の野菜を、もっと気軽に楽しみたい</li></ul>
-  </div>
-</section>
-
-Styleguide Project.About
-*/
+/* =========================
+  about
+========================= */
 .about {
   position: relative;
-  overflow: hidden;
   padding: 80px 20px 0;
-  background-color: var(--color-bg-light);
-  background-image: url("../img/veg-carrot.svg"), url("../img/veg-tomato.svg"), url("../img/veg-potato.svg"), url("../img/veg-cabbage.png");
+  background-color: #f4f3f1;
+
+  /* 野菜背景 */
+  background-image:
+    url("../veg-carrot.svg"),
+    url("./veg-tomato.svg"),
+    url("./veg-potato.svg"),
+    url("./veg-cabbage.png");
+
   background-repeat: no-repeat;
-  background-position: left 25% top 90%, right 25% top 90%, right 15% top 80%, left 15% top 80%;
-  background-size: 60px, 40px, 50px, 50px;
+
+  background-position:
+    left 25% top 90%,  /* にんじん */
+    right 25% top 90%,/* トマト */
+    right 15% top 80%,/* ジャガイモ */
+    left 15% top 80%;/* キャベツ */
+
+  background-size:
+    60px,/* にんじん */
+    40px,/* トマト */
+    50px,/* ジャガイモ */
+    50px;/* キャベツ */
+
+  overflow: hidden;
 }
 
+/* 中身 */
 .about__inner {
-  position: relative;
-  z-index: 2;
   max-width: 560px;
   margin: 0 auto;
   text-align: center;
-}
-
-.about__title {
-  margin-bottom: 24px;
-  color: var(--color-text);
-  font-family: var(--font-serif);
-  font-size: 2.4rem;
-  font-weight: 700;
-  line-height: 1.7;
-}
-
-.about__list {
-  display: inline-flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 14px;
-  margin-bottom: 28px;
-  list-style: none;
-  text-align: left;
-}
-
-.about__list li {
   position: relative;
-  padding-left: 18px;
-  color: var(--color-text-sub);
-  font-size: 14px;
-  line-height: 1.7;
+  z-index: 2;
 }
 
-.about__list li::before {
-  content: "";
-  position: absolute;
-  top: 0.7em;
-  left: 0;
-  width: 7px;
-  height: 7px;
-  background: var(--color-text);
-}
-
+/* テキスト */
 .about__text {
-  margin-bottom: 32px;
-  color: #5a4a3f;
   font-size: 14px;
   line-height: 2;
+  color: #5a4a3f;
+  margin-bottom: 32px;
 }
 
+/* ボタン */
+.about__btn {
+  display: inline-flex;
+  padding: 14px 28px;
+  background: #f57c00;
+  color: #fff;
+  border-radius: 999px;
+  min-height: 45px;
+  font-size: 14px;
+  gap: 8px; 
+  align-items: center;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+}
+
+/* 矢印本体 */
+.about__btn::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-top: 2px solid #fff;
+  border-right: 2px solid #fff;
+
+  transform: rotate(45deg);
+  transition: transform 0.3s ease;
+}
+
+.about__btn:hover::after {
+  transform: rotate(45deg) translate(6px, -6px);
+}
+
+/* =========================
+  ground（芽＋土）
+========================= */
 .about__ground {
   position: relative;
   z-index: 1;
@@ -541,48 +422,16 @@ Styleguide Project.About
 
 .about__ground img {
   width: 100%;
+  display: block;
 }
 
-@media screen and (min-width: 768px) {
-  .about__inner {
-    max-width: 672px;
-  }
 
-  .about__title {
-    font-size: 32px;
-  }
-
-  .about__list li,
-  .about__text {
-    font-size: 16px;
-  }
-
-  .about__btn {
-    min-height: 56px;
-  }
-}
-
-@media screen and (min-width: 1024px) {
-  .about {
-    padding: 80px 20px 0;
-    background-position: left 35% top 60%, right 35% top 60%, right 25% top 40%, left 25% top 40%;
-    background-size: 130px, 100px, 100px, 100px;
-  }
-}
-
-/* ==================================================
-  Project: Organic
-================================================== */
-/*
-Organic
-
-オーガニック農家の希少性と栽培方法を説明するセクション。
-
-Styleguide Project.Organic
-*/
+/* =========================
+  organic
+========================= */
 .organic {
+  background: #E3CCB9;
   padding: 64px 20px 72px;
-  background: var(--color-bg-beige);
 }
 
 .organic__inner {
@@ -590,32 +439,41 @@ Styleguide Project.Organic
   margin: 0 auto;
 }
 
+/* =========================
+  heading
+========================= */
 .organic__heading {
-  margin-bottom: 40px;
   text-align: center;
+  margin-bottom: 40px;
 }
 
 .organic__title {
-  margin-bottom: 20px;
-  color: var(--color-text);
-  font-family: var(--font-serif);
   font-size: 24px;
-  font-weight: 500;
   line-height: 1.6;
+  font-weight: 500;
+  color: #4b3426;
+  margin-bottom: 20px;
 }
 
-.organic__title span,
-.organic__lead strong {
-  color: var(--color-green);
+.organic__title span {
+  color: #3D581E;
   font-weight: 700;
 }
 
 .organic__lead {
-  color: var(--color-text-sub);
   font-size: 14px;
   line-height: 2;
+  color: #5a4333;
 }
 
+.organic__lead strong {
+  color: #3D581E;
+  font-weight: 700;
+}
+
+/* =========================
+  list
+========================= */
 .organic__list {
   display: flex;
   flex-direction: column;
@@ -624,6 +482,14 @@ Styleguide Project.Organic
   margin-bottom: 32px;
 }
 
+/* 1つ目 */
+.organic__item--single {
+  width: 100%;
+  max-width: 180px;
+  text-align: center;
+}
+
+/* 2・3、4・5 */
 .organic__group {
   display: flex;
   justify-content: center;
@@ -631,8 +497,7 @@ Styleguide Project.Organic
   width: 100%;
 }
 
-.organic__item,
-.organic__item--single {
+.organic__item {
   width: 100%;
   max-width: 180px;
   text-align: center;
@@ -641,18 +506,19 @@ Styleguide Project.Organic
 .organic__circle {
   width: 100%;
   max-width: 180px;
+  display: block;
   margin: 0 auto 16px;
 }
 
 .organic__caption {
-  color: var(--color-text-sub);
   font-size: 12px;
   line-height: 1.8;
+  color: #5a4333;
 }
 
 .organic__how {
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-end; /* ←右端に寄せる */
   align-items: center;
   gap: 8px;
 }
@@ -660,21 +526,35 @@ Styleguide Project.Organic
 .organic__leaf {
   width: 48px;
 }
+/* =========================
+  tablet
+========================= */
+@media screen and (min-width: 768px) {
+  /* 中身 */
+.about__inner {
+  max-width: 672px;
 
-.organic__note {
-  color: var(--color-text-sub);
-  font-size: 14px;
-  line-height: 1.6;
 }
 
-@media screen and (min-width: 768px) {
+.about__text {
+  font-size: 16px;
+}
+
+/* ボタン */
+.about__btn {
+min-height: 56px;
+}
+
   .organic__title {
     font-size: 32px;
+    margin-bottom: 20px;
   }
 
   .organic__lead {
     font-size: 16px;
+    line-height: 2;
   }
+
 
   .organic__list {
     gap: 32px;
@@ -683,6 +563,11 @@ Styleguide Project.Organic
 
   .organic__group {
     gap: 24px;
+  }
+
+  .organic__item,
+  .organic__item--single {
+    max-width: 180px;
   }
 
   .organic__circle {
@@ -695,22 +580,35 @@ Styleguide Project.Organic
   }
 
   .organic__how {
-    max-width: var(--container-lg);
+    display: flex;
+    justify-content: flex-end; /* ←右端に寄せる */
+    align-items: center;
+    gap: 8px;
+    max-width: 1080px;
   }
 }
 
+/* =========================
+  pc
+========================= */
 @media screen and (min-width: 1024px) {
   .organic__list {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     align-items: start;
     gap: 24px;
-    max-width: var(--container-lg);
     margin-bottom: 32px;
+    max-width: 1080px;
   }
 
+  /* グループの箱を消して、中身だけ5列に参加させる */
   .organic__group {
     display: contents;
+  }
+
+  .organic__item,
+  .organic__item--single {
+    max-width: 180px;
   }
 
   .organic__circle {
@@ -720,38 +618,64 @@ Styleguide Project.Organic
   .organic__caption {
     font-size: 12px;
   }
+
+
+  .about {
+    position: relative;
+    padding: 80px 20px 0;
+    background-color: #f4f3f1;
+  
+
+    /* 野菜背景 */
+    background-image:
+    url("./veg-carrot.svg"),
+    url("./veg-tomato.svg"),
+    url("./veg-potato.svg"),
+    url("./veg-cabbage.png");
+
+  background-repeat: no-repeat;
+
+  background-position:
+    left 35% top 60%,  /* にんじん */
+    right 35% top 60%,/* トマト */
+    right 25% top 40%,/* ジャガイモ */
+    left 25% top 40%;/* キャベツ */
+
+  background-size:
+    130px,/* にんじん */
+    100px,/* トマト */
+    100px,/* ジャガイモ */
+    100px;/* キャベツ */
+
+  overflow: hidden;
+}
 }
 
-/* ==================================================
-  Project: Reason
-================================================== */
-/*
-Reason Cards
-
-選ばれる理由を3カードで提示するセクション。
-
-Styleguide Project.Reason
-*/
+/* =========================
+  reason
+========================= */
 .reason {
   padding: 64px 20px;
-  background-color: var(--color-bg-beige);
+  background-color: #E3CCB9;
 }
 
 .reason__inner {
-  max-width: var(--container-lg);
+  max-width: 1080px;
   margin: 0 auto;
 }
 
 .reason__title {
   margin-bottom: 32px;
   text-align: center;
-  color: var(--color-text);
-  font-family: var(--font-serif);
   font-size: 24px;
-  font-weight: 500;
   line-height: 1.6;
+  font-weight: 500;
+  color: #4b3426;
 }
 
+/* =========================
+  list
+========================= */
 .reason__list {
   display: flex;
   flex-direction: column;
@@ -759,6 +683,9 @@ Styleguide Project.Reason
   gap: 48px;
 }
 
+/* =========================
+  card
+========================= */
 .reason__card {
   position: relative;
   width: 100%;
@@ -770,61 +697,75 @@ Styleguide Project.Reason
   position: absolute;
   top: 0;
   left: 50%;
-  z-index: 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  transform: translateX(-50%);
   width: 56px;
   height: 56px;
   border-radius: 999px;
   background: #f8f5f0;
-  color: var(--color-text);
-  font-family: var(--font-serif);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   font-size: 32px;
-  font-weight: 500;
   line-height: 1;
-  transform: translateX(-50%);
+  color: #4b3426;
+  font-weight: 500;
+  z-index: 2;
+
+  font-family: "Zen Old Mincho", sans-serif;
 }
 
 .reason__body {
-  min-height: 100%;
-  padding: 36px 24px 24px;
-  border-radius: 18px;
   background: #f8f5f0;
+  border-radius: 18px;
+  padding: 36px 24px 24px;
+  min-height: 100%;
 }
 
 .reason__heading {
   margin-bottom: 24px;
   text-align: center;
-  color: var(--color-text);
   font-size: 18px;
-  font-weight: 700;
   line-height: 1.6;
+  font-weight: 700;
+  color: #4b3426;
 }
 
+/* =========================
+  image
+========================= */
 .reason__image {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   width: 120px;
   height: 120px;
   margin: 0 auto 24px;
   border-radius: 999px;
   background: #c89563;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .reason__image img {
-  width: auto;
   max-width: 84px;
   max-height: 84px;
+  width: auto;
+  height: auto;
 }
 
+/* =========================
+  text
+========================= */
 .reason__text {
-  color: var(--color-text-sub);
   font-size: 13px;
   line-height: 2;
+  color: #5a4333;
 }
 
+/* =========================
+  tablet
+========================= */
 @media screen and (min-width: 768px) {
   .reason {
     padding: 88px 32px;
@@ -844,6 +785,7 @@ Styleguide Project.Reason
 
   .reason__card {
     width: 320px;
+    max-width: 320px;
   }
 
   .reason__body {
@@ -853,11 +795,13 @@ Styleguide Project.Reason
 
   .reason__heading {
     font-size: 17px;
+    margin-bottom: 24px;
   }
 
   .reason__image {
     width: 118px;
     height: 118px;
+    margin-bottom: 24px;
   }
 
   .reason__text {
@@ -866,6 +810,9 @@ Styleguide Project.Reason
   }
 }
 
+/* =========================
+  pc
+========================= */
 @media screen and (min-width: 1024px) {
   .reason {
     padding: 96px 40px;
@@ -879,6 +826,10 @@ Styleguide Project.Reason
     width: 60px;
     height: 60px;
     font-size: 36px;
+  }
+
+  .reason__body {
+    padding: 40px 24px 24px;
   }
 
   .reason__heading {
@@ -900,39 +851,38 @@ Styleguide Project.Reason
   }
 }
 
-/* ==================================================
-  Project: Trial
-================================================== */
-/*
-Trial
 
-お試しセットの商品カードセクション。
-
-Styleguide Project.Trial
-*/
+/* =========================
+  trial
+========================= */
 .trial {
   padding: 64px 20px;
   background-color: #d7c4b4;
 }
 
 .trial__inner {
-  max-width: var(--container-lg);
+  max-width: 1080px;
   margin: 0 auto;
   padding: 40px 20px 48px;
+  background: #f6f0e8;
   border-radius: 24px;
-  background: var(--color-bg-cream);
 }
 
+/* =========================
+  title
+========================= */
 .trial__title {
   margin-bottom: 32px;
   text-align: center;
-  color: var(--color-text);
-  font-family: var(--font-serif);
   font-size: 24px;
-  font-weight: 500;
   line-height: 1.6;
+  font-weight: 500;
+  color: #4b3426;
 }
 
+/* =========================
+  list
+========================= */
 .trial__list {
   display: flex;
   flex-direction: column;
@@ -946,73 +896,107 @@ Styleguide Project.Trial
 
 .trial__item-title {
   margin-bottom: 8px;
-  color: var(--color-text);
   font-size: 15px;
-  font-weight: 500;
   line-height: 1.7;
+  font-weight: 500;
+  color: #4b3426;
 }
 
 .trial__meta {
   margin-bottom: 16px;
-  color: #6b5444;
   font-size: 12px;
   line-height: 1.7;
+  color: #6b5444;
 }
 
+/* =========================
+  image
+========================= */
 .trial__image {
   margin-bottom: 16px;
 }
 
 .trial__image img {
   width: 100%;
+  display: block;
   border-radius: 4px;
 }
 
+/* =========================
+  price
+========================= */
 .trial__price {
   display: flex;
-  flex-wrap: wrap;
   align-items: baseline;
   justify-content: center;
   gap: 6px;
+  flex-wrap: wrap;
 }
 
 .trial__price-main {
-  color: var(--color-accent-dark);
   font-size: 28px;
-  font-weight: 700;
   line-height: 1;
+  font-weight: 700;
+  color: #cf6e00;
 }
 
 .trial__price-sub {
-  color: #6b5444;
   font-size: 12px;
   line-height: 1.6;
+  color: #6b5444;
 }
 
+/* =========================
+  cta
+========================= */
 .trial__cta {
   text-align: center;
 }
 
-.trial__cta p {
-  margin-top: 12px;
-  color: var(--color-text-sub);
-  font-size: 12px;
-  line-height: 1.7;
+ /* ボタン */
+ .trial__btn {
+  display: inline-flex;
+  padding: 14px 64px;
+  background: #f57c00;
+  min-height: 45px;
+  color: #fff;
+  border-radius: 999px;
+  font-size: 14px;
+  gap: 8px; 
+  box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+  text-align: center;
+  align-items: center;
 }
 
-.trial__btn {
-  min-width: 240px;
-  padding-right: 48px;
-  padding-left: 48px;
+
+/* 矢印本体 */
+.trial__btn::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-top: 2px solid #fff;
+  border-right: 2px solid #fff;
+
+  transform: rotate(45deg);
+  transition: transform 0.3s ease;
 }
 
+.trial__btn:hover::after {
+  transform: rotate(45deg) translate(6px, -6px);
+}
+
+
+/* =========================
+  tablet
+========================= */
 @media screen and (min-width: 768px) {
   .trial {
     padding: 80px 32px;
   }
 
   .trial__inner {
-    padding: 56px 40px;
+    max-width: 1080px;
+    padding: 56px 40px 56px;
     border-radius: 32px;
   }
 
@@ -1042,16 +1026,41 @@ Styleguide Project.Trial
     font-size: 13px;
   }
 
+  .trial__image {
+    margin-bottom: 20px;
+    width: 428px;
+  }
+
   .trial__price-main {
     font-size: 30px;
   }
 
   .trial__btn {
+    min-width: 240px;
     min-height: 56px;
     font-size: 15px;
   }
+
+  /* ボタン */
+.trial__btn {
+  display: inline-flex;
+  padding: 14px 64px;
+  background: #f57c00;
+  color: #fff;
+  border-radius: 999px;
+  font-size: 14px;
+  gap: 8px; 
+  box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+  text-align: center;
+  align-items: center;
 }
 
+  
+}
+
+/* =========================
+  pc
+========================= */
 @media screen and (min-width: 1024px) {
   .trial {
     padding: 96px 40px;
@@ -1059,12 +1068,12 @@ Styleguide Project.Trial
 
   .trial__inner {
     max-width: 1120px;
-    padding: 64px 48px;
+    padding: 64px 48px 64px;
   }
 
   .trial__title {
-    margin-bottom: 48px;
     font-size: 40px;
+    margin-bottom: 48px;
   }
 
   .trial__list {
@@ -1080,45 +1089,58 @@ Styleguide Project.Trial
     font-size: 18px;
   }
 
+  .trial__meta {
+    font-size: 13px;
+  }
+
   .trial__price-main {
     font-size: 32px;
   }
+
+  .trial__price-sub {
+    font-size: 12px;
+  }
 }
 
-/* ==================================================
-  Project: Farmers Quality
-================================================== */
-/*
-Farmers Quality
-
-登録農家と品質保証をまとめて提示するセクション。
-
-Styleguide Project.FarmersQuality
-*/
+/* =========================
+  farmers-quality
+========================= */
 .farmers-quality {
   padding: 64px 20px;
-  background-color: var(--color-bg-beige);
+  background-color: #E3CCB9;
 }
 
 .farmers-quality__inner {
-  max-width: var(--container-lg);
+  max-width: 1080px;
   margin: 0 auto;
 }
 
+/* =========================
+  section spacing
+========================= */
 .farmers-quality__farmers {
   margin-bottom: 72px;
 }
 
+.farmers-quality__guarantee {
+  margin-bottom: 0;
+}
+
+/* =========================
+  title
+========================= */
 .farmers-quality__title {
   margin-bottom: 32px;
   text-align: center;
-  color: var(--color-text);
-  font-family: var(--font-serif);
   font-size: 24px;
-  font-weight: 500;
   line-height: 1.6;
+  font-weight: 500;
+  color: #4b3426;
 }
 
+/* =========================
+  farmers list
+========================= */
 .farmers-quality__list {
   display: flex;
   flex-direction: column;
@@ -1135,31 +1157,27 @@ Styleguide Project.FarmersQuality
 
 .farmers-quality__image img {
   width: 100%;
+  display: block;
 }
 
 .farmers-quality__heading {
   margin-bottom: 12px;
   text-align: center;
-  color: var(--color-text);
   font-size: 15px;
+  line-height: 1.7;
   font-weight: 700;
-  line-height: 1.7;
-}
-
-.farmers-name {
-  margin-bottom: 10px;
-  text-align: center;
-  color: var(--color-text-sub);
-  font-size: 12px;
-  line-height: 1.7;
+  color: #4b3426;
 }
 
 .farmers-quality__text {
-  color: var(--color-text-sub);
   font-size: 12px;
   line-height: 1.9;
+  color: #5a4333;
 }
 
+/* =========================
+  guarantee
+========================= */
 .farmers-quality__guarantee-content {
   display: flex;
   flex-direction: column;
@@ -1168,6 +1186,7 @@ Styleguide Project.FarmersQuality
 
 .farmers-quality__guarantee-image img {
   width: 100%;
+  display: block;
 }
 
 .farmers-quality__guarantee-texts {
@@ -1177,11 +1196,14 @@ Styleguide Project.FarmersQuality
 }
 
 .farmers-quality__guarantee-text {
-  color: var(--color-text);
   font-size: 14px;
   line-height: 2;
+  color: #4b3426;
 }
 
+/* =========================
+  tablet
+========================= */
 @media screen and (min-width: 768px) {
   .farmers-quality {
     padding: 88px 32px;
@@ -1205,8 +1227,17 @@ Styleguide Project.FarmersQuality
     flex: 1;
   }
 
+  .farmers-quality__image {
+    margin-bottom: 18px;
+  }
+
   .farmers-quality__heading {
     font-size: 16px;
+  }
+
+  .farmers-quality__text {
+    font-size: 12px;
+    line-height: 2;
   }
 
   .farmers-quality__guarantee-content {
@@ -1225,6 +1256,9 @@ Styleguide Project.FarmersQuality
   }
 }
 
+/* =========================
+  pc
+========================= */
 @media screen and (min-width: 1024px) {
   .farmers-quality {
     padding: 96px 40px;
@@ -1246,7 +1280,12 @@ Styleguide Project.FarmersQuality
     gap: 32px;
   }
 
+  .farmers-quality__image {
+    margin-bottom: 20px;
+  }
+
   .farmers-quality__heading {
+    margin-bottom: 14px;
     font-size: 17px;
   }
 
@@ -1262,56 +1301,32 @@ Styleguide Project.FarmersQuality
 
   .farmers-quality__guarantee-text {
     font-size: 20px;
+    line-height: 2;
   }
+
 }
 
-/* ==================================================
-  Project: FAQ
-================================================== */
-/*
-FAQ
-
-購入前不安を解消するアコーディオン型FAQ。
-
-Markup:
-<section class="faq">
-  <div class="faq__inner">
-    <h2 class="faq__title">よくある質問</h2>
-    <div class="faq__list">
-      <div class="faq__item">
-        <button class="faq__question" type="button" aria-expanded="false">
-          <span class="faq__q">Q</span>
-          <span class="faq__text">定期購入？1回だけの注文はできる？</span>
-          <span class="faq__icon" aria-hidden="true">＋</span>
-        </button>
-      </div>
-    </div>
-  </div>
-</section>
-
-.faq__item.is-open - 回答が開いた状態
-
-Styleguide Project.FAQ
-*/
+/* =========================
+  faq
+========================= */
 .faq {
   padding: 64px 20px;
-  background-color: var(--color-bg-beige);
+  background-color: #E3CCB9;
 }
 
 .faq__inner {
   width: 100%;
-  max-width: var(--container-md);
+  max-width: 960px;
   margin: 0 auto;
 }
 
 .faq__title {
   margin-bottom: 32px;
   text-align: center;
-  color: var(--color-text);
-  font-family: var(--font-serif);
   font-size: 24px;
-  font-weight: 700;
   line-height: 1.6;
+  font-weight: 700;
+  color: #4b3426;
 }
 
 .faq__list {
@@ -1320,28 +1335,36 @@ Styleguide Project.FAQ
   gap: 16px;
 }
 
+.faq__item {
+  width: 100%;
+}
+
+/* =========================
+  question
+========================= */
 .faq__question {
+  width: 100%;
+  padding: 14px 16px;
+  border: none;
+  border-radius: 12px;
+  background: #f6f0e8;
   display: flex;
   align-items: center;
   gap: 12px;
-  width: 100%;
-  padding: 14px 16px;
-  border-radius: 12px;
-  background: var(--color-bg-cream);
   text-align: left;
   cursor: pointer;
 }
 
 .faq__q {
-  display: flex;
   flex-shrink: 0;
-  align-items: center;
-  justify-content: center;
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background: var(--color-brown);
-  color: var(--color-white);
+  background: #7a5b3c;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 14px;
   font-weight: 700;
   line-height: 1;
@@ -1349,34 +1372,38 @@ Styleguide Project.FAQ
 
 .faq__text {
   flex: 1;
-  color: var(--color-text);
   font-size: 13px;
   line-height: 1.6;
+  color: #4b3426;
 }
 
 .faq__icon {
   flex-shrink: 0;
-  color: var(--color-green);
   font-size: 22px;
   line-height: 1;
-  transition: transform var(--duration) ease;
+  color: #4b3426;
+  transition: transform 0.3s ease;
 }
 
+/* =========================
+  answer
+========================= */
 .faq__answer {
   max-height: 0;
   overflow: hidden;
+  background: #f6f0e8;
   border-radius: 0 0 12px 12px;
-  background: var(--color-bg-cream);
-  transition: max-height var(--duration) ease;
+  transition: max-height 0.3s ease;
 }
 
 .faq__answer p {
   padding: 0 16px 16px;
-  color: var(--color-text-sub);
   font-size: 13px;
   line-height: 1.9;
+  color: #5a4333;
 }
 
+/* 開いた時 */
 .faq__item.is-open .faq__question {
   border-radius: 12px 12px 0 0;
 }
@@ -1389,9 +1416,16 @@ Styleguide Project.FAQ
   transform: rotate(45deg);
 }
 
+/* =========================
+  tablet
+========================= */
 @media screen and (min-width: 768px) {
   .faq {
     padding: 80px 32px;
+  }
+
+  .faq__inner {
+    max-width: 960px;
   }
 
   .faq__title {
@@ -1414,9 +1448,12 @@ Styleguide Project.FAQ
     font-size: 15px;
   }
 
-  .faq__text,
-  .faq__answer p {
+  .faq__text {
     font-size: 14px;
+  }
+
+  .faq__icon {
+    font-size: 20px;
   }
 
   .faq__answer {
@@ -1425,6 +1462,7 @@ Styleguide Project.FAQ
 
   .faq__answer p {
     padding: 0 20px 20px;
+    font-size: 14px;
   }
 
   .faq__item.is-open .faq__question {
@@ -1432,6 +1470,9 @@ Styleguide Project.FAQ
   }
 }
 
+/* =========================
+  pc
+========================= */
 @media screen and (min-width: 1024px) {
   .faq {
     padding: 96px 40px;
@@ -1445,41 +1486,38 @@ Styleguide Project.FAQ
     padding: 18px 24px;
   }
 
-  .faq__text,
-  .faq__answer p {
+  .faq__text {
     font-size: 15px;
   }
 
   .faq__answer p {
     padding: 0 24px 24px;
+    font-size: 15px;
   }
 }
 
-/* ==================================================
-  Project: Footer
-================================================== */
-/*
-Footer
 
-ロゴ・ナビ・SNSを含むフッター。
-
-Styleguide Project.Footer
-*/
+/* =========================
+  footer
+========================= */
 .footer {
   padding: 48px 20px 32px;
-  background-color: var(--color-bg-footer);
+  background-color: #cbb8a3;
 }
 
 .footer__inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 32px;
-  max-width: var(--container-lg);
-  margin: 0 auto;
   text-align: center;
 }
 
+/* =========================
+  left
+========================= */
 .footer__left {
   display: flex;
   flex-direction: column;
@@ -1488,22 +1526,27 @@ Styleguide Project.Footer
 
 .footer__logo img {
   width: 120px;
+  display: block;
 }
 
 .footer__nav-list {
+  list-style: none;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  list-style: none;
-  font-family: var(--font-serif);
+  font-family: "Zen Old Mincho", sans-serif;
 }
 
 .footer__nav-list a {
-  color: var(--color-text);
   font-size: 12px;
   line-height: 1.6;
+  color: #4b3426;
+  text-decoration: none;
 }
 
+/* =========================
+  right
+========================= */
 .footer__right {
   display: flex;
   flex-direction: column;
@@ -1519,14 +1562,18 @@ Styleguide Project.Footer
 .footer__sns-link img {
   width: 45px;
   height: 45px;
+  display: block;
 }
 
 .footer__copy {
-  color: var(--color-text);
   font-size: 10px;
   line-height: 1.6;
+  color: #4b3426;
 }
 
+/* =========================
+  tablet
+========================= */
 @media screen and (min-width: 768px) {
   .footer {
     padding: 56px 32px 36px;
@@ -1548,6 +1595,10 @@ Styleguide Project.Footer
     width: 132px;
   }
 
+  .footer__nav-list a {
+    font-size: 12px;
+  }
+
   .footer__right {
     align-items: flex-end;
     gap: 18px;
@@ -1557,8 +1608,15 @@ Styleguide Project.Footer
     width: 22px;
     height: 22px;
   }
+
+  .footer__copy {
+    font-size: 10px;
+  }
 }
 
+/* =========================
+  pc
+========================= */
 @media screen and (min-width: 1024px) {
   .footer {
     padding: 64px 40px 40px;
