@@ -252,7 +252,7 @@ h2 {
       rgba(247, 239, 234, 0.2) 80%,
       rgba(247, 239, 234, 0) 100%
     ),
-    url("../fv-vegetable__SP.jpg");
+    url("./fv-vegetable__SP.jpg");
   background-size: cover;
   background-position: 65% center;
   background-repeat: no-repeat;
