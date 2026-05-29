@@ -61,6 +61,7 @@ h2 {
   padding: 16px 20px;
 }
 
+
 .header__logo {
   position: relative;
   z-index: 1001;
@@ -134,14 +135,14 @@ h2 {
   pointer-events: auto;
 }
 
-.header__nav-list {
+/* .header__nav-list {
   display: flex;
   flex-direction: column;
   gap: 28px;
   list-style: none;
   text-align: center;
   font-family: "Zen Old Mincho", sans-serif;
-}
+} */
 
 .header__nav a {
   font-size: 16px;
@@ -180,8 +181,15 @@ h2 {
   }
 
   .header__nav-list {
-    flex-direction: row;
-    gap: 40px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+  
+  .header__nav-list a {
+    display: block;
+    font-size: 12px;
+    letter-spacing: 0.08em;
   }
 
   .header__nav a {
